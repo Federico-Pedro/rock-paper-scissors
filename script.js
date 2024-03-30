@@ -1,54 +1,56 @@
 function getComputerChoice(){
-    let compChoice = Math.floor(Math.random()*3);
-    if (compChoice == 1) {
-        return "Rock";
-    } else if (compChoice == 2) {
-        return "Paper"
-    } else {
-        return "Scissors"
-    }
-}
-let userChoice;
-let choice;
-function getUserChoice(){
-    userChoice = prompt("Write your choice (Rocks, Paper, Scissors");
-    userChoice = userChoice.toLowerCase();
-    
-    switch (userChoice) {
-        case'rocks':
-            choice = 1;
+    let computerChoice = Math.floor(Math.random()*3);
+    switch (computerChoice) {
+        case 1:
+            computerChoice = 'rocks';
             break;
-        case 'paper':
-            choice = 2;
+        case 2:
+            computerChoice = 'paper';
             break;
-        case 'scissors':
-            choice = 3;
-            break;
+        
+                        
         default:
-            alert('That is not a valid option');
-            getUserChoice();
-
-    }    
-        return choice;        
+            computerChoice = 'scissors';
     }
-    // if (userChoice != "rocks" || userChoice != "paper" || userChoice != "scissors") {
-    //     alert("Your choice is invalid");
-    //     getUserChoice();
-    // } else if (userChoice == "rocks") {
-    //     choice = 1;
-    // } else if (userChoice == "paper") {
-    //     choice = 2;
-    // } else {
-    //     choice = 3;
+    return computerChoice;
+
+}
+
+
+function getUserChoice(){ 
+    return (prompt("Write your choice (Rocks, Paper, Scissors")).toLowerCase();
+      
+    // switch (userChoice) {
+    //     case 'rocks':
+    //     case 'paper':
+    //     case 'scissors':
+    //         return userChoice;
+    //         break;
+    //     default:  
+    //     alert('That is not a valid option');
+    //     getUserChoice();          
     // }
-    // return choice;
+}
+   
 
 
-// function play() {
-//     getComputerChoice();
-//     getUserChoice();
-//     if (compChoice == choice) {
-//         alert("You draw!");
-//     } else if (compChoice == 1 )
-// }
-// }
+let computerSelection = getComputerChoice();
+let playerSelection = getUserChoice();
+
+
+
+function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+            return `That was a tie between your ${playerSelection} and computer's ${computerSelection}`;
+        } else if ((playerSelection === 'rocks' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rocks') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+            return `You win!!!! "${playerSelection}" beats "${computerSelection}"`;
+        } else {
+            return `You lose!!! "${computerSelection}" beats "${playerSelection}"`;
+        }
+      }
+
+
+
+
+
+    
