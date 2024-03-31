@@ -20,37 +20,42 @@ function getComputerChoice(){
 function getUserChoice(){ 
     return (prompt("Write your choice (Rocks, Paper, Scissors")).toLowerCase();
       
-    // switch (userChoice) {
-    //     case 'rocks':
-    //     case 'paper':
-    //     case 'scissors':
-    //         return userChoice;
-    //         break;
-    //     default:  
-    //     alert('That is not a valid option');
-    //     getUserChoice();          
-    // }
 }
    
+let computerSelection;
+let playerSelection;
+
+function getChoice (){
+    computerSelection = getComputerChoice();
+    playerSelection = getUserChoice();
+    
+}
 
 
-let computerSelection = getComputerChoice();
-let playerSelection = getUserChoice();
-
-
+let player = 0;
+let computer = 0;
 
 function playRound(playerSelection, computerSelection) {
+        
         if (playerSelection === computerSelection) {
-            return `That was a tie between your ${playerSelection} and computer's ${computerSelection}`;
+            return `That was a tie between your "${playerSelection}" and computer's "${computerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
         } else if ((playerSelection === 'rocks' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rocks') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-            return `You win!!!! "${playerSelection}" beats "${computerSelection}"`;
+            player ++;
+            return `You win!!!! "${playerSelection}" beats "${computerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
         } else {
-            return `You lose!!! "${computerSelection}" beats "${playerSelection}"`;
+            computer ++;
+            return `You lose!!! "${computerSelection}" beats "${playerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
         }
       }
 
+function playGame(){
+    for (let i = 1; i <= 5; i++){
+        getChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
 
 
 
 
-    
+
