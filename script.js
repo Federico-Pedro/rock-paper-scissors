@@ -1,8 +1,11 @@
+let computerSelection;
+let playerSelection;
+
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random()*3);
     switch (computerChoice) {
         case 1:
-            computerChoice = 'rocks';
+            computerChoice = 'rock';
             break;
         case 2:
             computerChoice = 'paper';
@@ -13,24 +16,7 @@ function getComputerChoice(){
             computerChoice = 'scissors';
     }
     return computerChoice;
-
 }
-
-
-function getUserChoice(){ 
-    return (prompt("Write your choice (Rocks, Paper, Scissors")).toLowerCase();
-      
-}
-   
-let computerSelection;
-let playerSelection;
-
-function getChoice (){
-    computerSelection = getComputerChoice();
-    playerSelection = getUserChoice();
-    
-}
-
 
 let player = 0;
 let computer = 0;
@@ -38,24 +24,46 @@ let computer = 0;
 function playRound(playerSelection, computerSelection) {
         
         if (playerSelection === computerSelection) {
-            return `That was a tie between your "${playerSelection}" and computer's "${computerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
+            player ++;
+            computer ++;
+            return `You chose "${playerSelection}" <br> The computer chose "${computerSelection}" <br> That is a Tie`;
+            
         } else if ((playerSelection === 'rocks' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rocks') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
             player ++;
-            return `You win!!!! "${playerSelection}" beats "${computerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
+            return `You chose "${playerSelection}" <br> The computer chose "${computerSelection}" <br> You win!!!`;
         } else {
             computer ++;
-            return `You lose!!! "${computerSelection}" beats "${playerSelection}". The score is: Player: ${player} - Computer: ${computer}.`;
+            return `You chose "${playerSelection}" <br> The computer chose "${computerSelection}" <br> Sorry! You lose:`;
         }
       }
 
-function playGame(){
-    for (let i = 1; i <= 5; i++){
-        getChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    
+const buttons = document.querySelectorAll(".btn");
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
+const winner = document.querySelector(".winner");
+
+buttons.forEach(function(button) {
+  button.addEventListener("click", function() {
+    playerSelection = (button.innerText).toLowerCase();
+  computerSelection = getComputerChoice();
+  results.innerHTML = playRound(playerSelection, computerSelection);
+  score.innerText = `Player: ${player} ----- Computer: ${computer}`;
+  final();
+  });
+});
+
+function final(){
+    if (player === 5){
+        score.innerText = 'YOU ARE THE WINNER!!!!!!';
+        results.innerHTML = '';
+        player = 0;
+        computer = 0; 
+      } else if (computer === 5){
+        score.innerText = 'BETTER LUCK NEXT TIME';
+        results.innerHTML = '';
+        player = 0;
+        computer = 0;
+      }
+      
 }
-
-
-
-
-

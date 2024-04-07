@@ -1,0 +1,46 @@
+body {
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+h1{
+    margin-bottom: 50PX;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    width: 200px;
+    height: 75px;
+    margin: 20px;
+    font-size: 30PX;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px #000;
+}
+
+.results {
+    margin-top: 50px;
+    text-align: center;
+    background-color: #0b1a38;
+    color: #fec09c;
+    width: 100%;
+}
+
+.score{
+    margin-top: 20px;
+}
+
+.red{
+    color: #c90000;
+}
+
+.green{
+    color: rgb(0, 93, 0);
+}
