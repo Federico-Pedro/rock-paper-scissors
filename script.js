@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
             computer ++;
             return `You chose "${playerSelection}" <br> The computer chose "${computerSelection}" <br> That is a Tie`;
             
-        } else if ((playerSelection === 'rocks' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rocks') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
+        } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
             player ++;
             return `You chose "${playerSelection}" <br> The computer chose "${computerSelection}" <br> You win!!!`;
         } else {
